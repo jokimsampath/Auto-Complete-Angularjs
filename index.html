@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>AngularJS Autocomplete</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<style>
+	.searchSubmit {
+		width: 100%;
+		margin: 10px 0;
+	}
+	@media (min-width: 768px){
+		.searchSubmit{
+			width: auto;
+			margin: auto;
+		}
+		.search.form-control,.list-group{
+			width:78%;
+		}
+	}
+	</style>
+</head>
+<body>    
+<div class="container" ng-app="myApp" ng-controller="ctrl">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top:100px;">
+			<form class="form-inline" name="searchForm">
+				<input type="text" id="search" name="search" ng-model="user.value"  ng-keyup="search()" class="search form-control" autocomplete="off"/>
+				<input type="button" id="searchSubmit" value="Search" ng-model="Submit" name="searchSubmit" ng-click="searchSubmit()" class="searchSubmit btn btn-primary">
+				<div class="ts-list">
+					<ul class="list-group" ng-show="list">
+						<li class="list-group-item" ng-repeat="opt in res" ng-click="resClick(opt)" >
+						{{ opt }}
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+		<div class="col-xs-12 col-sm-12" style="margin-top:50px;" ng-show="desPanel">
+			<div class="panel panel-default">
+			  <div class="panel-heading"><h2>{{user.value}}</h2></div>
+			  <div class="panel-body">
+				<h3>Details:</h3>
+				{{des.details}}
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="js/angular.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/script.js"></script>
+</body>
+</html>
